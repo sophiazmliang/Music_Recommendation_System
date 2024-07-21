@@ -1,4 +1,4 @@
-#Music Recommendation System
+## **Music Recommendation System**
 
 **Capstone Project for the Applied Data Science Program, MIT Professional Education**
 
@@ -29,7 +29,22 @@ By achieving this goal, the system seeks to increase user engagement, satisfacti
 - Evaluation: Measuring the accuracy and effectiveness of the recommendations using metrics like precision, recall, and RMSE.
 - Optimization: Tuning the models to improve performance and scalability.
 
-## **Final Conclusion and Recommendations**
+## **Data Preprocessing**
+
+**We trim down the dataset to only consider:**
+
+1.   users have listened to at least 90 songs (high-engagement user)
+2.   songs have been listened by at least 120 users (high-quality music)
+3.   play count less than or equal to 5 (excluding outliers which can skew the analysis)
+
+
+After the trimming process, the dataset has been condensed to encompass **110,000+ user interactions** involving **560+ songs, 230+ artists and 3000+ users**. This refined dataset provides a more manageable and computationally efficient foundation for constructing recommendation systems.
+
+Based on the count of unique users and songs, there exists a potential for 1,776,265 interactions (3155 users * 563 songs) within the dataset. However, the actual recorded interactions amount to only 117,876, representing approximately **6.6%** of the total potential interactions. This discrepancy underscores the reality that not every user has engaged with every song in the dataset, a common occurrence in such datasets.
+
+While this presents an opportunity to develop recommendation systems for suggesting songs that users have yet to interact with, it also introduces **the challenge of data sparsity**. Addressing this challenge will be paramount in ensuring the efficacy and relevance of the recommendation algorithms.
+
+## **Algorithms and models analysis**
 
 In this case study, we built various recommendation systems:
 - Popularity-Based
@@ -39,6 +54,8 @@ In this case study, we built various recommendation systems:
 - Content-based collaborative filtering
 - Hybrid (combine SVD, user-user, item-item and Clustering-based, with Linear, Ridge and Lasso regression)
 - Hybrid - Random Forest
+
+The surprise library was used to demonstrate all of the Collaborative-filtering-based algorithms. For all of these algorithms, Grid Search Cross-Validation was used to find the optimal hyperparameters for the data, and to improve upon the baseline algorithms. In addition, the optimal hyperparameters were used to generate related predictions.
 
 **Insights:**
 
@@ -53,7 +70,7 @@ In this case study, we built various recommendation systems:
 - Content-based and simple collaborative filtering methods may lag behind in sparse datasets due to their reliance on either detailed metadata or sufficient user-item interactions.
 
 
-**Proposal for the final solution design:**
+## **Proposal for the final solution design:**
 
 *   **Hybrid model which combines SVD and user-user with Ridge regression**
 
